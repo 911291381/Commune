@@ -1,0 +1,9 @@
+/applicationContext-sch.xml
+/applicationContext-ws.xml
+/applicationContext.xml
+/cn/
+/ds-025.properties
+/ds-0510.properties
+/ds-local.properties
+/mybatis-configuration.xml
+/web-servlet.xml

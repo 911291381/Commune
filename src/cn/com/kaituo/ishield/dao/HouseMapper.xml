@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.kaituo.ishield.dao.HouseMapper">
+	<resultMap id="rm_House" type="cn.com.kaituo.ishield.model.House">
+		<!-- 基础字段 -->
+		<id property="oid" column="id" />
+		<!-- 业务字段 -->
+		<result property="SFZ" column="SFZ" />
+		<result property="USAGE" column="USAGE" />
+		<result property="ROOMCODE" column="ROOMCODE" />
+
+		<result property="NAME" column="NAME" />
+		<result property="XB" column="XB" />
+		<result property="DHHM" column="DHHM" />
+
+		<result property="HKSX" column="HKSX" />
+		<result property="LD" column="LD" />
+		<result property="CS" column="CS" />
+		<result property="HS" column="HS" />
+
+
+	</resultMap>
+	<select id="selectBy" resultMap="rm_House">
+		select
+		SFZ,
+		USAGE,
+		ROOMCODE,
+		NAME,
+		XB,
+		DHHM,
+		HKSX,
+		LD,
+		CS,
+		HS
+		FROM
+		V_FW
+		<where>
+			<if test="LD != null and LD != ''">
+				AND LD=#{LD}
+			</if>
+			<if test="HS != null and HS != ''">
+				AND HS=#{HS}
+			</if>
+			<if test="CS != null and CS != ''">
+				AND CS=#{CS}
+			</if>
+
+		</where>
+
+
+	</select>
+
+
+</mapper>
+         

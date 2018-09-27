@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.kaituo.ishield.dao.PersonnelMapper">
+	<resultMap id="rm_Personnel" type="cn.com.kaituo.ishield.model.Personnel">
+		<!-- 基础字段 -->
+		<id property="oid" column="id" />
+		<!-- 业务字段 -->
+		<result property="SFZ" column="IDNUMBER" />
+		<result property="NAME" column="NAME" />
+		<result property="XB" column="XB" />
+
+		<result property="MZ" column="MZ" />
+		<result property="WHCD" column="WHCD" />
+		
+
+	</resultMap>
+	<select id="select" resultMap="rm_Personnel">
+		select
+		IDNUMBER,
+		NAME,
+		XB,
+		MZ,
+		WHCD
+		FROM
+		PERSONNEL
+		WHERE
+		IDNUMBER=#{SFZ}
+
+
+	</select>
+
+
+</mapper>
+         

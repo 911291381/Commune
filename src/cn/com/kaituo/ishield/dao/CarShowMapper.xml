@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.kaituo.ishield.dao.CarShowMapper">
+	<resultMap id="rm_CarShow" type="cn.com.kaituo.ishield.model.CarShow">
+		<!-- 基础字段 -->
+		<id property="oid" column="ID" />
+		<!-- 业务字段 -->
+		<result property="DEVICENAME" column="DEVICENAME" />
+		<result property="CARNUM" column="CARNUM" />
+		<result property="LCAPTURETIME" column="LCAPTURETIME" />
+		<result property="PICCONTEXT" column="PICCONTEXT" />
+
+
+	</resultMap>
+
+	<select id="select" resultMap="rm_CarShow">
+		select
+		PICCONTEXT
+		FROM
+		CLTP tp
+		left
+		join
+		CLBW bw
+		on
+		tp.PICNAME=bw.CARPICNAME
+		WHERE
+		bw.ID=#{oid}
+
+
+
+	</select>
+	<select id="selectBy" resultMap="rm_CarShow">
+		select
+		DEVICENAME,
+		CARNUM,
+		LCAPTURETIME
+		FROM
+		CLBW
+		<where>
+			<if test="CARNUM != null and CARNUM != ''">
+				AND CARNUM like concat(concat('%',#{CARNUM}),'%')
+			</if>
+
+		</where>
+		order
+		by
+		LCAPTURETIME
+		desc
+
+
+	</select>
+
+
+</mapper>
+         

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.kaituo.ishield.dao.EventShowMapper">
+	<resultMap id="rm_EventShow" type="cn.com.kaituo.ishield.model.EventShow">
+		<!-- 基础字段 -->
+		<id property="oid" column="ID" />
+		<!-- 业务字段 -->
+		<result property="ALARMTYPE" column="ALARMTYPE" />
+		<result property="EVENTTYPE" column="EVENTTYPE" />
+		<result property="TIME" column="TIME" />
+		<result property="PICCONTEXT" column="PICCONTEXT" />
+
+
+	</resultMap>
+
+	<select id="select" resultMap="rm_EventShow">
+		select
+		PICCONTEXT
+		FROM
+		BJTP tp
+		left
+		join
+		BJBW bw
+		on
+		tp.PICNAME=bw.PICNAME
+		WHERE
+		bw.ID=#{oid}
+
+
+
+	</select>
+	<select id="selectBy" resultMap="rm_EventShow">
+		select
+		ALARMTYPE,
+		EVENTTYPE,
+		TIME
+		FROM
+		BJBW
+		
+		order
+		by
+		TIME
+		desc
+
+
+	</select>
+
+
+</mapper>
+         

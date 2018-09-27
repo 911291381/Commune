@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.kaituo.ishield.dao.FaceShowMapper">
+	<resultMap id="rm_FaceShow" type="cn.com.kaituo.ishield.model.FaceShow">
+		<!-- 基础字段 -->
+		<id property="oid" column="ID" />
+		<!-- 业务字段 -->
+		<result property="XM" column="XM" />
+		<result property="XB" column="XB" />
+		<result property="SFZH" column="SFZH" />
+		<result property="PICCONTEXT" column="PICCONTEXT" />
+
+
+	</resultMap>
+
+	<select id="select" resultMap="rm_FaceShow">
+		select
+		PICCONTEXT
+		FROM
+		RLTP tp
+		left
+		join
+		RLBW bw
+		on
+		tp.PICNAME=bw.PICNAME
+		WHERE
+		bw.ID=#{oid}
+
+
+
+	</select>
+	<select id="selectBy" resultMap="rm_FaceShow">
+		select
+		XM,
+		XB,
+		SFZH
+		FROM
+		RLTP tp
+		left
+		join
+		RLBW bw
+		on
+		tp.PICNAME=bw.PICNAME
+		<where>
+			<if test="SFZH != null and SFZH != ''">
+				AND SFZH like concat(concat('%',#{SFZH}),'%')
+			</if>
+
+		</where>
+		order
+		by
+		tp.pictime
+		desc
+
+
+	</select>
+
+
+</mapper>
+         

@@ -1,6 +1,11 @@
 package cn.com.kaituo.ishield.model;
 
 import cn.com.kaituo.husky.core.model.BaseModel;
+/**
+ * 楼栋实体
+ * @author kingstar
+ *
+ */
 
 public class Building extends BaseModel<String> {
 

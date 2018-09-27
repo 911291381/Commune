@@ -9,6 +9,12 @@ import cn.com.kaituo.ishield.model.Building;
 import cn.com.kaituo.ishield.model.BuildingQuery;
 import cn.com.kaituo.ishield.service.IBuildingService;
 
+/**
+ * aaaF
+ * 
+ * @author kingstar
+ *
+ */
 @RestController
 @RequestMapping("/building")
 public class BuildingController extends CommonController<Building, BuildingQuery> {

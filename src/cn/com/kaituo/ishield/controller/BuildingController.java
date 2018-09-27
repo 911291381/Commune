@@ -10,7 +10,7 @@ import cn.com.kaituo.ishield.model.BuildingQuery;
 import cn.com.kaituo.ishield.service.IBuildingService;
 
 /**
- * aaaF
+ * 
  * 
  * @author kingstar
  *
